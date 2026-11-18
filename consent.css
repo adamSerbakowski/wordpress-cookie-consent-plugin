@@ -1,0 +1,42 @@
+/* Button colours and font size come from the settings (--cc-* variables in the banner's style attribute). */
+.cc-banner {
+  position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 99999;
+  max-width: 720px; max-height: calc(100vh - 32px); overflow-y: auto; margin: 0 auto; padding: 14px 16px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+  background: #fff; color: #222; border-radius: 8px; box-shadow: 0 4px 20px rgba(0, 0, 0, .2);
+  font: var(--cc-font, 14px)/1.45 system-ui, sans-serif;
+}
+.cc-banner.cc-full { left: 0; right: 0; bottom: 0; max-width: none; border-radius: 0; padding: 14px 24px; }
+.cc-banner[hidden], .cc-open[hidden] { display: none; }
+.cc-text { flex: 1 1 320px; margin: 0; font-size: inherit; }
+.cc-text a { color: inherit; text-decoration: underline; }
+.cc-buttons { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+/* Both buttons look the same: refusing must not be harder than accepting. */
+.cc-btn {
+  padding: .55em 1.3em; border: 2px solid var(--cc-btn-bg, #1428a0); border-radius: 4px;
+  background: var(--cc-btn-bg, #1428a0); color: var(--cc-btn-fg, #fff); font: inherit; font-weight: 600; cursor: pointer;
+}
+.cc-btn:hover { filter: brightness(.85); }
+.cc-btn:focus-visible, .cc-open:focus-visible { outline: 3px solid #f5a623; outline-offset: 2px; }
+.cc-open {
+  position: fixed; left: 12px; bottom: 12px; z-index: 99998; padding: 4px 10px;
+  border: 1px solid #ccc; border-radius: 4px; background: #fff; color: #444;
+  font: 12px system-ui, sans-serif; cursor: pointer; opacity: .85;
+}
+.cc-cats { flex: 1 1 100%; margin: 0; padding: 0; border: 0; display: grid; gap: 6px; }
+.cc-cats[hidden], .cc-btn[hidden], .cc-link[hidden] { display: none; }
+/* Resistance to theme CSS (e.g. hidden checkboxes, Bootstrap legend/label styles). */
+.cc-banner .cc-cats input[type=checkbox] { all: revert; margin: 0 6px 0 0; vertical-align: -2px; }
+.cc-banner .cc-cats label { display: block; margin: 0; padding: 0; font: inherit; color: inherit; cursor: pointer; }
+.cc-banner .cc-cats legend { float: none; width: auto; padding: 0; margin: 0 0 4px; border: 0; font: inherit; font-weight: 600; color: inherit; }
+.cc-link { padding: .55em .4em; border: 0; background: none; color: inherit; font: inherit; text-decoration: underline; cursor: pointer; }
+.cc-link:focus-visible { outline: 3px solid #f5a623; outline-offset: 2px; }
+/* Embed placeholder (YouTube, Google Maps) until functional cookies are accepted. */
+.cc-embed { position: relative; display: block; width: 100%; height: 100%; }
+.cc-embed.cc-embed-fixed { display: inline-block; width: auto; height: auto; max-width: 100%; }
+.cc-embed iframe { vertical-align: top; }
+.cc-embed-ph {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  padding: 12px; background: #eceff3; color: #222; text-align: center; font: 14px/1.4 system-ui, sans-serif;
+}
+.cc-embed-ph .cc-btn { background: #1428a0; border-color: #1428a0; color: #fff; }
